@@ -16,7 +16,6 @@ var appCss = ['src/**/*.css'];
 var appJS = ['src/**/*.js', 'tmp/*.js'];
 var appHtml = ['src/**/*.html'];
 var sassMain = 'src/styles/main.scss';
-var sassSrc = ['src/**/*.scss'];
 
 var indexBuildFile = 'html-build/index.html';
 
