@@ -1,11 +1,14 @@
 # Angular-build1
 Angular-build1 for modular web applications
 
-# Built with the following technologies:
+# Tools and libraries:
 - Grunt
 - karma
 - Sass
 - JSHint
+- AngularJS
+- Bootstrap
+- JQuery
 
 ## Grunt modules available:
 - grunt-contrib-jshint
