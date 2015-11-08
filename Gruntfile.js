@@ -121,7 +121,7 @@ module.exports = function (grunt) {
         },
         watch: {
             scripts: {
-                files: 'src/**/*',
+                files: ['src/**/*', 'html-build/**/*.html'],
                 tasks: ["jshint", 'html2js:dist', 'concat:app', 'concat:vendor', 'sass:dist', 'concat_css:app', 'concat_css:vendor', 'htmlbuild:dev']
             }
         },
@@ -188,8 +188,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-html-build');
 
 
-    grunt.registerTask("build-dev", ["jshint",  'html2js:dist', 'concat:app', 'sass:dist', 'concat_css:app', 'htmlbuild:dev', 'watch']);
+    grunt.registerTask("build-dev", ["jshint", 'html2js:dist', 'concat:app', 'sass:dist', 'concat_css:app', 'htmlbuild:dev', 'watch']);
 
-    grunt.registerTask("build-prod", ["jshint",  'karma', 'html2js:dist', 'concat:app', 'concat:vendor', 'uglify', 'sass:dist', 'concat_css:app', 'concat_css:vendor', 'cssmin', 'htmlbuild:prod', 'clean:temp']);
+    grunt.registerTask("build-prod", ["jshint", 'karma', 'html2js:dist', 'concat:app', 'concat:vendor', 'uglify', 'sass:dist', 'concat_css:app', 'concat_css:vendor', 'cssmin', 'htmlbuild:prod', 'clean:temp']);
 
 };
