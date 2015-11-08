@@ -16,6 +16,8 @@ var appCss = ['src/**/*.css'];
 var appJS = ['src/**/*.js', 'tmp/*.js'];
 var appHtml = ['src/**/*.html'];
 var sassMain = 'src/styles/main.scss';
+var sassSrc = ['src/**/*.scss'];
+
 var indexBuildFile = 'html-build/index.html';
 
 // HTML Build section config
@@ -26,6 +28,7 @@ var sections = {
         footer: 'html-build/sections/footer.html'
     }
 };
+
 module.exports = function (grunt) {
     grunt.initConfig({
         jshint: {
@@ -184,8 +187,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-html-build');
 
-    grunt.registerTask("build-dev", ["jshint", 'html2js:dist', 'concat:app', 'sass:dist', 'concat_css:app', 'htmlbuild:dev', 'watch']);
 
-    grunt.registerTask("build-prod", ["jshint", 'karma', 'html2js:dist', 'concat:app', 'concat:vendor', 'uglify', 'sass:dist', 'concat_css:app', 'concat_css:vendor', 'cssmin', 'htmlbuild:prod', 'clean:temp']);
+    grunt.registerTask("build-dev", ["jshint",  'html2js:dist', 'concat:app', 'sass:dist', 'concat_css:app', 'htmlbuild:dev', 'watch']);
+
+    grunt.registerTask("build-prod", ["jshint",  'karma', 'html2js:dist', 'concat:app', 'concat:vendor', 'uglify', 'sass:dist', 'concat_css:app', 'concat_css:vendor', 'cssmin', 'htmlbuild:prod', 'clean:temp']);
 
 };
