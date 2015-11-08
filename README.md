@@ -1,5 +1,5 @@
 # Angular-build1
-Angular-build1 for modular web applications
+Modular web application build for AngularJS developer.
 
 ## Tools and libraries:
 - Grunt
@@ -9,6 +9,7 @@ Angular-build1 for modular web applications
 - AngularJS
 - Bootstrap
 - JQuery
+- Lodash
 
 ## Grunt modules:
 - grunt-contrib-jshint
