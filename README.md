@@ -58,7 +58,7 @@ var sections = {
    - All javascript and css files under 'src' folder will be concatenated and compressed to app.js/.css;
    - To run production build ``` grunt build-prod ```
    - Index.html will be created with the ff. output:
-  ```
+```
      <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -86,7 +86,7 @@ var sections = {
         </body>
         
         </html>
-  ```     
+```     
   
 #### For development
 - Will watch changes from 'src' folder;
