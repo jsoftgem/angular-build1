@@ -1,7 +1,7 @@
 # Angular-build1
 Angular-build1 for modular web applications
 
-# Tools and libraries:
+## Tools and libraries:
 - Grunt
 - karma
 - Sass
@@ -10,7 +10,7 @@ Angular-build1 for modular web applications
 - Bootstrap
 - JQuery
 
-## Grunt modules available:
+## Grunt modules:
 - grunt-contrib-jshint
 - grunt-contrib-concat
 - grunt-contrib-clean
@@ -25,7 +25,7 @@ Angular-build1 for modular web applications
 - grunt-sass
 - grunt-html-build
 
-# Getting started
+## Getting started
 - To install dependencies run ``` npm install  ```
 - [Grunt:](http://gruntjs.com/) We use Grunt as our build system. 
 - To install grunt-cli run ``` npm install -g grunt-cli ```
@@ -77,8 +77,8 @@ var sections = {
 };
 ```
 
-### 2 ways to build the project
-#### For production
+#### 2 ways to build the project
+##### For production
    - All javascript and css files under 'src' folder will be concatenated and compressed to app.js/.css;
    - To run production build ``` grunt build-prod ```
    - Index.html will be created with the ff. output:
@@ -112,7 +112,7 @@ var sections = {
         </html>
 ```     
   
-#### For development
+##### For development
 - Will watch changes from 'src' folder;
 - All javascript and css files under 'src' folder will be imported directy to index.html;
 - To run development build ``` grunt build-dev ```
