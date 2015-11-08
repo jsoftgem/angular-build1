@@ -4,7 +4,7 @@ Angular-build1 for modular web applications
 # Getting started
 - To install dependencies run ``` npm install  ```
 - [Grunt:](http://gruntjs.com/) We use Grunt as our build system. 
-- To install grunt-cli run ``` npm install grunt-cli --save-dev ```
+- To install grunt-cli run ``` npm install -g grunt-cli ```
 
 ### Configuration
 - You can see the ff. variables in Gruntfile.js:
@@ -37,6 +37,9 @@ var appHtml = ['src/**/*.html'];
 // Sass main source file
 var sassMain = 'src/styles/main.scss';
 
+// Sass source files
+var sassSrc = ['src/**/*.scss'];
+
 // index.html source for HTML Builder
 var indexBuildFile = 'html-build/index.html';
 
@@ -51,5 +54,37 @@ var sections = {
 ```
 
 ### 2 ways to build the project
-- ``` grunt build-prod ```
-- ``` grunt build-dev ```
+#### For production
+   - All javascript and css files under 'src' folder will be concatenated and compressed to app.js/.css;
+   - To run production build ``` grunt build-prod ```
+   - Index.html will be created with the ff. output:
+  ```
+     <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Welcome to Angular Modular Build 1</title>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+            <![endif]-->
+            <link type="text/css" rel="stylesheet" href="bin/css/vendor.min.css" />
+            <link type="text/css" rel="stylesheet" href="bin/css/app.min.css" />
+        </head>
+        
+        <body>
+            <header>
+                <div id="header"></div>
+            </header>
+            <div ng-cloak id="main_content" ui-view></div>
+            <footer>
+                <div id="footer"></div>
+            </footer>
+            <script type="text/javascript" src="bin/js/vendor.min.js"></script>
+            <script type="text/javascript" src="bin/js/app.min.js"></script>
+        </body>
+        
+        </html>
+  ```     
+#### For development
