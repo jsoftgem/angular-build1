@@ -31,9 +31,8 @@ Angular-build1 for modular web applications
 - To install grunt-cli run ``` npm install -g grunt-cli ```
 
 ### Configuration
-- You can see the ff. variables in Gruntfile.js:
+- Global variables config is under Gruntfile.js:
 ```
-
 // CSS files to be concatenated to vendor.css
 var vendorCss = ['bower_components/normalize.css/normalize.css',
     'bower_components/bootstrap/dist/css/bootstrap.css'];
