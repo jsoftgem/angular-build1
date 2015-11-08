@@ -26,6 +26,11 @@ Modular web application build for AngularJS developer.
 - grunt-sass
 - grunt-html-build
 
+## Prerequisites
+- [Node.js](https://nodejs.org/en/)
+- [Bower](http://bower.io/)
+- [Grunt](http://gruntjs.com/)
+
 ## Getting started
 - To install dependencies run ``` npm install  ```
 - [Grunt:](http://gruntjs.com/) We use Grunt as our build system. 
