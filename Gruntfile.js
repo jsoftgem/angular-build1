@@ -16,7 +16,6 @@ var appCss = ['src/**/*.css'];
 var appJS = ['src/**/*.js', 'tmp/*.js'];
 var appHtml = ['src/**/*.html'];
 var sassMain = 'src/styles/main.scss';
-
 var indexBuildFile = 'html-build/index.html';
 
 // HTML Build section config
@@ -31,6 +30,7 @@ var sections = {
 module.exports = function (grunt) {
     grunt.initConfig({
         jshint: {
+            gruntfile: ['Gruntfile.js'],
             all: ['Gruntfile.js', 'src/**/*.js']
         },
         karma: {
@@ -119,9 +119,23 @@ module.exports = function (grunt) {
             }
         },
         watch: {
+            options: {
+                livereload: {
+                    host: 'localhost',
+                    port: 9000
+                }
+            },
+            gruntfile: {
+                files: 'Gruntfile.js',
+                tasks: ['jshint:gruntfile']
+            },
             scripts: {
-                files: ['src/**/*', 'html-build/**/*.html'],
-                tasks: ["jshint", 'html2js:dist', 'concat:app', 'concat:vendor', 'sass:dist', 'concat_css:app', 'concat_css:vendor', 'htmlbuild:dev']
+                files: ['src/**/*.js', 'src/**/*.tpl.html', 'html-build/**/*.html'],
+                tasks: ["jshint", 'html2js:dist', 'htmlbuild:dev']
+            },
+            css: {
+                files: ['src/**/*.css', 'src/**/*.scss'],
+                tasks: ['html2js:dist', 'sass:dist', 'htmlbuild:dev']
             }
         },
         copy: {
