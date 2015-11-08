@@ -89,10 +89,10 @@ var sections = {
   ```     
   
 #### For development
-    - Will watch changes from 'src' folder;
-    - All javascript and css files under 'src' folder will be imported directy to index.html;
-    - To run development build ``` grunt build-dev ```
-    - Index.html will be created with the ff. output:
+- Will watch changes from 'src' folder;
+- All javascript and css files under 'src' folder will be imported directy to index.html;
+- To run development build ``` grunt build-dev ```
+- Index.html will be created with the ff. output:
     
 ```
 <!DOCTYPE html>
