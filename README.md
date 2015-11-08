@@ -316,4 +316,7 @@ Angular-build1 is using [grunt-html-build](https://www.npmjs.com/package/grunt-h
 </html>
 ```
 
+## Using Sass
+Using sass in the project is easy, just add a .scss sile under 'sassSrc' directory and @import it to 'sassMain' file. The project will automatically build and compile the sass file to 'appCss' directory with 'sass.css'.  Since we are using watcher in 'appCss' directory the compiled 'sass.css' will be concatenated to app.css/.min.css this way we can use both css and sass at the same time.
+
 
