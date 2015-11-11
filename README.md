@@ -83,6 +83,7 @@ var sections = {
 ##### For production
    - All javascript and css files under 'src' folder will be concatenated and compressed to app.js/.css;
    - To run production build ``` grunt build-prod ```
+   - Run ``` grunt debug ``` to debug production build
    - Index.html will be created with the ff. output:
 ```
      <!DOCTYPE html>
