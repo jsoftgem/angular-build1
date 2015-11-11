@@ -14,7 +14,7 @@ var vendorFonts = ['bower_components/bootstrap/fonts/*'];
 // Application's source files
 var appCss = ['src/**/*.css'];
 var appJS = ['src/**/*.js', 'tmp/*.js'];
-var appHtml = ['src/**/*.html'];
+var appHtml = ['src/**/*.tpl.html'];
 var sassMain = 'src/styles/main.scss';
 var indexBuildFile = 'html-build/index.html';
 
