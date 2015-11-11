@@ -28,6 +28,12 @@ var sections = {
 };
 
 module.exports = function (grunt) {
+    require('load-grunt-tasks')(grunt);
+    grunt.registerTask("build-dev", ['clean', 'copy', 'jshint', 'html2js:dist', 'concat:app', 'sass:dist', 'concat_css:app', 'htmlbuild:dev', 'watch']);
+    grunt.registerTask("build-prod", ['clean:dist', 'copy', 'jshint', 'karma', 'html2js:dist', 'concat:app', 'concat:vendor',
+        'uglify', 'sass:dist', 'concat_css:app', 'concat_css:vendor', 'cssmin', 'htmlbuild:prod', 'clean:temp']);
+    grunt.registerTask("debug", ['html2js:dist', 'htmlbuild:dev']);
+
     grunt.initConfig({
         jshint: {
             gruntfile: ['Gruntfile.js'],
@@ -70,6 +76,9 @@ module.exports = function (grunt) {
         clean: {
             temp: {
                 src: ['tmp']
+            },
+            dist: {
+                src: ['bin']
             }
         },
         uglify: {
@@ -173,11 +182,11 @@ module.exports = function (grunt) {
                 options: {
                     beautify: true,
                     scripts: {
-                        libs: vendorJS,
+                        libs: 'bin/js/vendor.js',
                         app: appJS
                     },
                     styles: {
-                        libs: vendorCss,
+                        libs: 'bin/css/vendor.css',
                         app: appCss
                     },
                     sections: sections
@@ -185,24 +194,4 @@ module.exports = function (grunt) {
             }
         }
     });
-
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-compress');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-concat-css');
-    grunt.loadNpmTasks('grunt-html2js');
-    grunt.loadNpmTasks('grunt-karma');
-    grunt.loadNpmTasks('grunt-sass');
-    grunt.loadNpmTasks('grunt-html-build');
-
-
-    grunt.registerTask("build-dev", ["jshint", 'html2js:dist', 'concat:app', 'sass:dist', 'concat_css:app', 'htmlbuild:dev', 'watch']);
-
-    grunt.registerTask("build-prod", ["jshint", 'karma', 'html2js:dist', 'concat:app', 'concat:vendor', 'uglify', 'sass:dist', 'concat_css:app', 'concat_css:vendor', 'cssmin', 'htmlbuild:prod', 'clean:temp']);
-
 };
