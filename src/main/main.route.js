@@ -11,9 +11,7 @@
 
         $stateProvider.state('main', {
             url: '/',
-            templateProvider: ['$templateCache', function ($templateCache) {
-                return $templateCache.get('main/main.tpl.html');
-            }],
+            templateUrl: 'src/main/main.tpl.html',
             controller: 'mainCtrl'
         });
 

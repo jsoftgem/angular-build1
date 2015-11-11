@@ -30,10 +30,10 @@ var sections = {
 module.exports = function (grunt) {
 
     require('load-grunt-tasks')(grunt);
-    grunt.registerTask("build-dev", ['clean', 'copy', 'jshint', 'html2js:dist', 'concat:app', 'sass:dist', 'concat_css:app', 'htmlbuild:dev', 'watch']);
+    grunt.registerTask("build-dev", ['clean', 'copy', 'jshint', 'concat:vendor', 'sass:dist', 'concat_css:vendor', 'htmlbuild:dev', 'watch']);
     grunt.registerTask("build-prod", ['clean:dist', 'copy', 'jshint', 'karma', 'html2js:dist', 'concat:app', 'concat:vendor',
         'uglify', 'sass:dist', 'concat_css:app', 'concat_css:vendor', 'cssmin', 'htmlbuild:prod', 'clean:temp']);
-    grunt.registerTask("debug", ['html2js:dist', 'htmlbuild:dev']);
+    grunt.registerTask("debug", ['htmlbuild:dev']);
 
     grunt.initConfig({
         jshint: {
@@ -48,13 +48,15 @@ module.exports = function (grunt) {
         },
         html2js: {
             options: {
-                base: 'src/',
-                module: 'build.templates',
+                base: '.',
+                module: 'main.templates',
                 htmlmin: {
                     collapseBooleanAttributes: true,
                     collapseWhitespace: true,
                     removeComments: true
-                }
+                },
+                singleModule: true,
+                existingModule: true
             },
             dist: {
                 src: appHtml,
@@ -140,12 +142,12 @@ module.exports = function (grunt) {
                 tasks: ['jshint:gruntfile']
             },
             scripts: {
-                files: ['src/**/*.js', 'src/**/*.tpl.html', 'html-build/**/*.html'],
-                tasks: ["jshint", 'html2js:dist', 'htmlbuild:dev']
+                files: ['src/**/*.js'],
+                tasks: ["jshint"]
             },
             css: {
                 files: ['src/**/*.css', 'src/**/*.scss'],
-                tasks: ['html2js:dist', 'sass:dist', 'htmlbuild:dev']
+                tasks: ['html2js:dist', 'sass:dist']
             }
         },
         copy: {

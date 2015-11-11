@@ -3,3 +3,4 @@ bin
 tmp
 index.html
 **/sass.css
+node_modules

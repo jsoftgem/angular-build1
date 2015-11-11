@@ -10,9 +10,7 @@
             url: 'home',
             views: {
                 'content': {
-                    templateProvider: ['$templateCache', function ($templateCache) {
-                        return $templateCache.get('home/home.tpl.html');
-                    }],
+                    templateUrl: 'src/home/home.tpl.html',
                     controller: 'homeCtrl'
                 }
             }

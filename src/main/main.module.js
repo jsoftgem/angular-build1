@@ -1,6 +1,6 @@
 (function () {
     'use strict';
 
-    angular.module('main.module', ['build.templates', 'ui.router', 'main.route', 'main.controller', 'home.module']);
+    angular.module('main.module', ['main.templates', 'ui.router', 'main.route', 'main.controller', 'home.module']);
 
 })();
