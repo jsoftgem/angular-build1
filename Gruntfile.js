@@ -28,6 +28,7 @@ var sections = {
 };
 
 module.exports = function (grunt) {
+
     require('load-grunt-tasks')(grunt);
     grunt.registerTask("build-dev", ['clean', 'copy', 'jshint', 'html2js:dist', 'concat:app', 'sass:dist', 'concat_css:app', 'htmlbuild:dev', 'watch']);
     grunt.registerTask("build-prod", ['clean:dist', 'copy', 'jshint', 'karma', 'html2js:dist', 'concat:app', 'concat:vendor',
