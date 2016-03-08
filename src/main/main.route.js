@@ -1,18 +1,17 @@
 (function () {
     'use strict';
 
-    angular.module('main.route', [])
+    angular.module('main.module')
         .config(MainRoute);
 
     MainRoute.$inject = ['$stateProvider', '$urlRouterProvider'];
 
     function MainRoute($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/');
-
-        $stateProvider.state('main', {
-            url: '/',
-            templateUrl: 'src/main/main.tpl.html',
-            controller: 'mainCtrl'
+        $urlRouterProvider.otherwise('/app');
+        $stateProvider.state('app', {
+            url: '/app',
+            abstract: true,
+            templateUrl: 'src/main/main.tpl.html'
         });
 
     }

@@ -2,15 +2,17 @@
   "name": "angular-build11",
   "version": "0.0.1",
   "dependencies": {
-    "angular": "1.4.7",
+    "angular": "1.4.9",
     "ui-router": "0.2.15",
     "normalize.css": "3.0.2",
     "bootstrap": "~3.3.5",
-    "angular-cookies": "~1.4.7",
-    "angular-resource": "~1.4.7"
+    "angular-cookies": "~1.4.9",
+    "angular-resource": "~1.4.9",
+    "bootstrap-toggle": "~2.2.1"
   },
-  "resolutions": "1.4.7",
+  "resolutions": "1.4.9",
   "devDependencies": {
     "angular-mocks": "~1.4.7"
+
   }
 }

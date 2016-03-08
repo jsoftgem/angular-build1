@@ -1,4 +1,7 @@
 // Vendor's source files
+var destinationFolder = "dist";
+var srcFolder = "src";
+
 var vendorCss = ['bower_components/normalize.css/normalize.css',
     'bower_components/bootstrap/dist/css/bootstrap.css'];
 
@@ -12,14 +15,24 @@ var vendorJS = ['bower_components/jquery/dist/jquery.js', 'bower_components/angu
 var vendorFonts = ['bower_components/bootstrap/fonts/*'];
 
 // Application's source files
-var appCss = ['src/**/*.css'];
-var appJS = ['src/**/*.js', 'tmp/*.js'];
-var appHtml = ['src/**/*.tpl.html'];
-var sassMain = 'src/styles/main.scss';
+var appCss = [srcFolder + '/**/*.css'];
+var appJS = [
+    getResource('main/main.module.js'),
+    getResource('home/home.module.js'),
+    srcFolder + '/**/*.js', 'tmp/*.js'];
+var appHtml = [srcFolder + '/**/*.tpl.html'];
+var sassMain = srcFolder + '/styles/main.scss';
 var indexBuildFile = 'html-build/index.html';
 
 // HTML Build section config
-var sections = {
+var htmlTemplates = {
+    dest: 'index.html',
+    appJS: destinationFolder + '/js/app.min.js',
+    libJS: destinationFolder + '/js/vendor.min.js',
+    appCSS: destinationFolder + '/css/app.min.css',
+    libCSS: destinationFolder + '/css/vendor.min.css',
+    devLibJS: destinationFolder + '/js/vendor.js',
+    devLibCSS: destinationFolder + '/css/vendor.css',
     layout: {
         header: 'html-build/sections/header.html',
         content: 'html-build/sections/content.html',
@@ -27,10 +40,19 @@ var sections = {
     }
 };
 
+var otherOptions = {
+    fonts: destinationFolder + '/fonts/'
+};
+
+
+function getResource(resource) {
+    return srcFolder + '/' + resource;
+}
+
 module.exports = function (grunt) {
 
     require('load-grunt-tasks')(grunt);
-    grunt.registerTask("build-dev", ['clean', 'copy', 'jshint', 'concat:vendor', 'sass:dist', 'concat_css:vendor', 'htmlbuild:dev', 'watch']);
+    grunt.registerTask("build-dev", ['clean', 'copy', 'jshint', 'karma', 'concat:vendor', 'sass:dist', 'concat_css:vendor', 'htmlbuild:dev']);
     grunt.registerTask("build-prod", ['clean:dist', 'copy', 'jshint', 'karma', 'html2js:dist', 'concat:app', 'concat:vendor',
         'uglify', 'sass:dist', 'concat_css:app', 'concat_css:vendor', 'cssmin', 'htmlbuild:prod', 'clean:temp']);
     grunt.registerTask("debug", ['htmlbuild:dev']);
@@ -38,7 +60,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         jshint: {
             gruntfile: ['Gruntfile.js'],
-            all: ['Gruntfile.js', 'src/**/*.js']
+            all: ['Gruntfile.js', srcFolder + '/**/*.js']
         },
         karma: {
             options: {
@@ -69,11 +91,11 @@ module.exports = function (grunt) {
             },
             app: {
                 src: appJS,
-                dest: 'bin/js/app.js'
+                dest: destinationFolder + '/js/app.js'
             },
             vendor: {
                 src: vendorJS,
-                dest: 'bin/js/vendor.js'
+                dest: destinationFolder + '/js/vendor.js'
             }
         },
         clean: {
@@ -81,15 +103,15 @@ module.exports = function (grunt) {
                 src: ['tmp']
             },
             dist: {
-                src: ['bin']
+                src: [destinationFolder]
             }
         },
         uglify: {
             dist: {
                 files: [
                     {
-                        'bin/js/app.min.js': ['bin/js/app.js'],
-                        'bin/js/vendor.min.js': ['bin/js/vendor.js']
+                        'dist/js/app.min.js': [destinationFolder + '/js/app.js'],
+                        'dist/js/vendor.min.js': [destinationFolder + '/js/vendor.js']
                     }
                 ],
                 options: {
@@ -101,11 +123,11 @@ module.exports = function (grunt) {
             options: {},
             app: {
                 src: appCss,
-                dest: 'bin/css/app.css'
+                dest: destinationFolder + '/css/app.css'
             },
             vendor: {
                 src: vendorCss,
-                dest: 'bin/css/vendor.css'
+                dest: destinationFolder + '/css/vendor.css'
             }
         },
         cssmin: {
@@ -113,9 +135,9 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'bin/css',
+                        cwd: destinationFolder + '/css',
                         src: ['**/*.css'],
-                        dest: 'bin/css',
+                        dest: destinationFolder + '/css',
                         ext: '.min.css'
                     }]
             }
@@ -142,11 +164,11 @@ module.exports = function (grunt) {
                 tasks: ['jshint:gruntfile']
             },
             scripts: {
-                files: ['src/**/*.js'],
+                files: [srcFolder + '/**/*.js'],
                 tasks: ["jshint"]
             },
             css: {
-                files: ['src/**/*.css', 'src/**/*.scss'],
+                files: [srcFolder + '/**/*.scss'],
                 tasks: ['html2js:dist', 'sass:dist']
             }
         },
@@ -156,7 +178,7 @@ module.exports = function (grunt) {
                     {
                         expand: true, flatten: true,
                         src: vendorFonts,
-                        dest: 'bin/fonts/',
+                        dest: otherOptions.fonts,
                         filter: 'isFile'
                     }
                 ]
@@ -165,36 +187,37 @@ module.exports = function (grunt) {
         htmlbuild: {
             prod: {
                 src: indexBuildFile,
-                dest: 'index.html',
+                dest: htmlTemplates.dest,
                 options: {
                     beautify: true,
                     scripts: {
-                        libs: 'bin/js/vendor.min.js',
-                        app: 'bin/js/app.min.js'
+                        libs: htmlTemplates.libJS,
+                        app: htmlTemplates.appJS
                     },
                     styles: {
-                        libs: 'bin/css/vendor.min.css',
-                        app: 'bin/css/app.min.css'
+                        libs: htmlTemplates.libCSS,
+                        app: htmlTemplates.appCSS
                     },
-                    sections: sections
+                    sections: htmlTemplates.layout
                 }
             },
             dev: {
                 src: indexBuildFile,
-                dest: 'index.html',
+                dest: htmlTemplates.dest,
                 options: {
                     beautify: true,
                     scripts: {
-                        libs: 'bin/js/vendor.js',
+                        libs: htmlTemplates.devLibJS,
                         app: appJS
                     },
                     styles: {
-                        libs: 'bin/css/vendor.css',
+                        libs: htmlTemplates.devLibCSS,
                         app: appCss
                     },
-                    sections: sections
+                    sections: htmlTemplates.layout
                 }
             }
         }
-    });
+    })
+    ;
 };

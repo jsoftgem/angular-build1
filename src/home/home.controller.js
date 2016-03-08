@@ -1,8 +1,6 @@
 (function () {
-
     'use strict';
-
-    angular.module('home.controller', [])
+    angular.module('home.module')
         .controller('homeCtrl', homeCtrl);
 
     homeCtrl.$inject = ['$scope'];
@@ -10,5 +8,4 @@
     function homeCtrl(scope) {
 
     }
-
 })();

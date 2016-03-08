@@ -11,18 +11,20 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
             'bower_components/angular-mocks/angular-mocks.js',
-            'src/**/*.js',
-            'test/**/*.spec.js'
+            'src/**/*'
         ],
         // list of files to exclude
-        exclude: [],
+        exclude: ['src/**/*.css', 'src/**/*.scss'],
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-        preprocessors: {},
-        // test results reporter to use
-        // possible values: 'dots', 'progress'
-        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['progress'],
+        preprocessors: {
+            'src/**/*.js': ['coverage'],
+            'src/**/*.html': ['ng-html2js']
+        },
+        ngHtml2JsPreprocessor: {
+            stripPrefix: 'src/'
+        },
+        reporters: ['progress', 'coverage'],
         // web server port
         port: 9876,
         // enable / disable colors in the output (reporters and logs)
@@ -32,6 +34,27 @@ module.exports = function (config) {
         logLevel: config.LOG_INFO,
         // enable / disable watching file and executing tests whenever any file changes
         autoWatch: true,
-        browsers: ['Chrome']
-    })
+        browsers: ['PhantomJS'],
+        phantomjsLauncher: {
+            cmd: {
+                win32: path.join(__dirname, 'src/test/resources/phantomjs/phantomjs.exe')
+            }
+        },
+        plugins: [
+            'karma-jasmine',
+            'karma-chrome-launcher',
+            'karma-phantomjs-launcher-nonet',
+            'karma-ng-html2js-preprocessor',
+            'karma-coverage'
+        ],
+        coverageReporter: {
+            dir: 'target/site/karma-coverage/',
+            reporters: [
+                {type: 'cobertura', subdir: 'cobertura'},
+                {type: 'html', subdir: 'html'}
+            ]
+        },
+        singleRun: true,
+        browserNoActivityTimeout: 60000
+    });
 };
