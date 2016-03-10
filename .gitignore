@@ -1,6 +1,6 @@
 bower_components
 bin
 tmp
-.index.html
+/index.html
 **/sass.css
 node_modules
