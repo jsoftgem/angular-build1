@@ -21,6 +21,7 @@
     var appJS = [
         getResource('main/main.module.js'),
         getResource('home/home.module.js'),
+        getResource('header/header.module.js'),
         srcFolder + '/**/*.js', 'tmp/*.js'];
     var appHtml = [srcFolder + '/**/*.tpl.html'];
     var sassMain = srcFolder + '/styles/main.scss';
@@ -42,15 +43,18 @@
         layout: {
             header: 'html-build/sections/header.html',
             content: 'html-build/sections/content.html',
+            sidebar: 'html-build/sections/sidebar.html',
             footer: 'html-build/sections/footer.html'
         },
         devData: {
             version: 'dev',
-            title: 'Angular build1'
+            title: 'Angular build1',
+            brand: 'App'
         },
         prodData: {
             version: '0.0.1',
-            title: 'Welcome to #App'
+            title: 'Welcome to #App',
+            brand: 'Xtreme'
         }
     };
 

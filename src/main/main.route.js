@@ -10,10 +10,14 @@
         $urlRouterProvider.otherwise('/app');
         $stateProvider.state('app', {
             url: '/app',
-            abstract: true,
-            templateUrl: 'src/main/main.tpl.html'
+            views: {
+                'header-view': {
+                    templateUrl: 'src/header/header.tpl.html'
+                },
+                'content-view': {},
+                'sidebar-view': {}
+            }
         });
-
     }
 
 })();
