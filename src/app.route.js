@@ -10,9 +10,17 @@
             url: '/',
             views: {
                 'content-view': {
-                    template: '<app-content></app-content>'
+                    template: '<app-content model="app.contentView"></app-content>',
+                    controller: 'AppController',
+                    controllerAs: 'app'
+                },
+                'header-view': {
+                    template: '<app-header model="app.headerView"></app-header>',
+                    controller: 'AppController',
+                    controllerAs: 'app'
                 }
             }
+
         });
     }
 })();

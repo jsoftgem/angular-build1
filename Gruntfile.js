@@ -19,6 +19,7 @@
     var appJS = [
         getResource('app.module.js'),
         getResource('content/content.module.js'),
+        getResource('header/header.module.js'),
         getResource('**/*.js'),
         'tmp/*.js'];
     var appHtml = [srcFolder + '/**/*.tpl.html'];
@@ -173,11 +174,11 @@
             tasks: ['jshint:gruntfile']
         },
         scripts: {
-            files: [srcFolder + '/**/*.js'],
+            files: [getResource('**/*.js')],
             tasks: ["jshint"]
         },
         css: {
-            files: [srcFolder + '/**/*.scss'],
+            files: [getResource('**/*.scss')],
             tasks: ['html2js:dist', 'sass:dist']
         }
     };
