@@ -6,23 +6,21 @@
     var srcFolder = "src";
     var vendorCss = ['bower_components/normalize.css/normalize.css',
         'bower_components/bootstrap/dist/css/bootstrap.css'];
-
     var vendorJS = ['bower_components/jquery/dist/jquery.js', 'bower_components/angular/angular.js',
         'bower_components/angular-cookies/angular-cookies.js',
         'bower_components/ui-router/release/angular-ui-router.js',
         'bower_component/angular-resource/angular-resource.js',
         'bower_components/bootstrap/dist/js/bootstrap.js',
         'bower_components/lodash/lodash.js'];
-
     var vendorFonts = ['bower_components/bootstrap/fonts/*'];
 
 // Application's source files
     var appCss = [srcFolder + '/**/*.css'];
     var appJS = [
-        getResource('main/main.module.js'),
-        getResource('home/home.module.js'),
-        getResource('header/header.module.js'),
-        srcFolder + '/**/*.js', 'tmp/*.js'];
+        getResource('app.module.js'),
+        getResource('content/content.module.js'),
+        getResource('**/*.js'),
+        'tmp/*.js'];
     var appHtml = [srcFolder + '/**/*.tpl.html'];
     var sassMain = srcFolder + '/styles/main.scss';
     var indexBuildFile = 'html-build/index.html';
@@ -75,7 +73,7 @@
     var html2JSConfig = {
         options: {
             base: '.',
-            module: 'main.templates',
+            module: 'app.templates',
             htmlmin: {
                 collapseBooleanAttributes: true,
                 collapseWhitespace: true,
