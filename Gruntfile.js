@@ -4,15 +4,15 @@
 // Vendor's source files
     var destinationFolder = "dist";
     var srcFolder = "src";
-    var vendorCss = ['bower_components/normalize.css/normalize.css',
-        'bower_components/bootstrap/dist/css/bootstrap.css'];
+    var vendorCss = ['bower_components/normalize.css/normalize.css'];
     var vendorJS = ['bower_components/jquery/dist/jquery.js', 'bower_components/angular/angular.js',
         'bower_components/angular-cookies/angular-cookies.js',
         'bower_components/ui-router/release/angular-ui-router.js',
         'bower_component/angular-resource/angular-resource.js',
-        'bower_components/bootstrap/dist/js/bootstrap.js',
+        'bower_components/bootstrap-sass/assets/javascripts/bootstrap-sprockets.js',
+        'bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
         'bower_components/lodash/lodash.js'];
-    var vendorFonts = ['bower_components/bootstrap/fonts/*'];
+    var vendorFonts = ['bower_components/bootstrap-sass/assets/fonts/bootstrap/*'];
 
 // Application's source files
     var appCss = [srcFolder + '/**/*.css'];
@@ -20,6 +20,7 @@
         getResource('app.module.js'),
         getResource('content/content.module.js'),
         getResource('header/header.module.js'),
+        getResource('sidebar/sidebar.module.js'),
         getResource('**/*.js'),
         'tmp/*.js'];
     var appHtml = [srcFolder + '/**/*.tpl.html'];

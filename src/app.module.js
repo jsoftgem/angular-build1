@@ -1,4 +1,4 @@
 (function () {
     'use strict';
-    angular.module('app', ['ui.router', 'app.templates', 'app.content', 'app.header']);
+    angular.module('app', ['ui.router', 'app.templates', 'app.content', 'app.header', 'app.sidebar']);
 })();

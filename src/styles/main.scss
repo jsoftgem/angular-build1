@@ -1,2 +1,15 @@
+@import "main.variables";
+@import "main.mixin";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+
 @import "../content/content.style";
 @import "../header/header.style";
+
+.panel {
+  @include box-shadow();
+}
+
+body {
+  padding-top: $main-padding-top;
+}

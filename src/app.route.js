@@ -18,6 +18,11 @@
                     template: '<app-header model="app.headerView"></app-header>',
                     controller: 'AppController',
                     controllerAs: 'app'
+                },
+                'sidebar-view': {
+                    template: '<app-sidebar model="app.sidebarView"></app-sidebar>',
+                    controller: 'AppController',
+                    controllerAs: 'app'
                 }
             }
 
