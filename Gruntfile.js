@@ -7,10 +7,11 @@
     var vendorCss = ['bower_components/normalize.css/normalize.css'];
     var vendorJS = ['bower_components/jquery/dist/jquery.js', 'bower_components/angular/angular.js',
         'bower_components/angular-cookies/angular-cookies.js',
+        'bower_components/angular-aria/angular-aria.js',
         'bower_components/ui-router/release/angular-ui-router.js',
         'bower_component/angular-resource/angular-resource.js',
-        'bower_components/bootstrap-sass/assets/javascripts/bootstrap-sprockets.js',
-        'bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
+        'bower_components/angular-material/angular-material.js',
+        'bower_components/angular-animate/angular-animate.js',
         'bower_components/lodash/lodash.js'];
     var vendorFonts = ['bower_components/bootstrap-sass/assets/fonts/bootstrap/*'];
 
